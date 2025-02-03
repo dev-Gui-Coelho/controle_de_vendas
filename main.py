@@ -64,9 +64,8 @@ class App(ctk.CTk):
         self.ipt_produtos.place(x=145, y=180)
 
         self.vender = ctk.CTkButton(self, text='Vender', width=100, fg_color=var_primary_key, text_color=var_black_color, hover_color=var_white_color).place(x=430, y=350)
-        self.vender = ctk.CTkButton(self, text='Limpar', width=100, fg_color=var_primary_key, text_color=var_black_color, hover_color=var_white_color).place(x=560, y=350)
-        self.vender = ctk.CTkButton(self, text='Sair', width=100, fg_color=var_primary_key, text_color=var_black_color, hover_color=var_white_color).place(x=690, y=350)
-
+        self.limpar = ctk.CTkButton(self, text='Limpar', width=100, fg_color=var_primary_key, text_color=var_black_color, hover_color=var_white_color, command=self.limpar).place(x=560, y=350)
+        self.sair = ctk.CTkButton(self, text='Sair', width=100, fg_color=var_primary_key, text_color=var_black_color, hover_color=var_white_color, command=self.exit_confirmation).place(x=690, y=350)
 
     def ver_mode_color_dark(self) -> bool:
         if self.switch_var.get() == 'dark' or self.btn_switch_theme.get() == 'dark':
@@ -86,6 +85,18 @@ class App(ctk.CTk):
         else:
             return self.change_to_light_mode()
 
+    def exit_app(self) -> None:
+        self.destroy()
+
+    def exit_confirmation(self) -> None:
+        if messagebox.askyesno('CONFIRMAÇÃO', 'Deseja sair?'):
+            self.exit_app()
+        else:
+            pass
+    
+    def limpar(self):
+        self.ipt_client.setvar(' ')
+    
 
 if __name__ == '__main__':
     app = App()
