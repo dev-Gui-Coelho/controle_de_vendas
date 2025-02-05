@@ -95,7 +95,11 @@ class App(ctk.CTk):
             pass
     
     def limpar(self):
-        self.ipt_client.setvar(' ')
+        self.ipt_client.delete(0,'end')
+        self.ipt_parcelas.set(' ')
+        self.ipt_produtos.delete('1.0','end')
+        self.ipt_data.delete(0,'end')
+        self.ipt_value.delete(0,'end')
     
 
 if __name__ == '__main__':
